@@ -11,7 +11,6 @@ export function Signup(){
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    console.log("I re-render");
     return <div className="bg-slate-300 h-screen flex justify-center items-center">
         <div className="flex flex-col justify-center">
             <div className="bg-white rounded-lg w-96 text-center p-2 h-max px-4">

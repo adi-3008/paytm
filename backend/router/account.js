@@ -23,7 +23,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     // fetch the account information of sender
     const account = await Account.findOne({userId : req.userId}).session(session);
 
-    console.log(account)
+    // console.log(account)
 
     if(!account || account.balance < amount){
         await session.abortTransaction();

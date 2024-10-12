@@ -5,10 +5,12 @@ import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export function Signin(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
     return <>
         <div className="bg-slate-300 h-screen flex justify-center items-center">
             <div className="flex flex-col justify-center">
@@ -24,6 +26,8 @@ export function Signin(){
                                     email : username,
                                     password : password
                                 })
+                                sessionStorage.setItem("token", response.data.token);
+                                navigate(`/dashboard?fromLogin=true`);
                             }catch(e){
                                 console.log(e);
                             }

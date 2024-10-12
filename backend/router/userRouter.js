@@ -59,11 +59,11 @@ const signinSchema = zod.object({
 
 // Signin route
 router.post("/signin", async (req, res) => {
-    console.log("signin")
+    // console.log("signin")
     const body = req.body;
     const validation = signinSchema.safeParse(body);
 
-    console.log(validation);
+    // console.log(validation);
 
     if (!validation.success) {
         return res.json({
@@ -76,7 +76,7 @@ router.post("/signin", async (req, res) => {
         password: body.password
     });
 
-    console.log(user);
+    // console.log(user);
 
     if (!user) {
         return res.json({
@@ -86,7 +86,7 @@ router.post("/signin", async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET);
 
-    console.log(token)
+    // console.log(token)
 
     res.json({
         message: "Signin successful",
@@ -138,5 +138,11 @@ router.put("/update", authMiddleWare, async (req, res) => {
         message: "Updated successfully"
     });
 });
+
+router.post("/me", authMiddleWare, (req, res) => {
+    return res.status(200).json({
+        valid : true
+    });
+})
 
 module.exports = router;

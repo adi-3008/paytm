@@ -39,7 +39,7 @@ function User({user}){
             </div>
         </div>
         <button onClick={(e) => {
-            navigate(`send?id=${user._id}&name=${user.firstName}`)
+            navigate(`/send?id=${user._id}&name=${user.firstName}`, { replace: false })
         }} className="bg-green-500 text-white font-medium rounded-full p-2">Send Money</button>
     </div>
 }
